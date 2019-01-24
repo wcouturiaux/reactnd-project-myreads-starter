@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import book from './book'
+import Book from './book'
 
-class shelf extends React.Component {
+class Shelf extends React.Component {
   state = {
 
   }
@@ -22,4 +22,4 @@ class shelf extends React.Component {
   }
 }
 
-export default shelf
+export default Shelf

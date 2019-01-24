@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import book from './book'
+import Book from './book'
 
-class search extends React.Component {
+class Search extends React.Component {
   state = {
-
+    query:''
   }
 
   render() {
@@ -16,10 +16,10 @@ class search extends React.Component {
             className='close-search'>
               Close
         </Link>
-        <div>Book Search</div>
+        <h2>Book Search</h2>
       </div>
     )
   }
 }
 
-export  default search
+export  default Search
