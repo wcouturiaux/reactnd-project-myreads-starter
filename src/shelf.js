@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import book from './book'
 
 class shelf extends React.Component {
   state = {
@@ -9,12 +10,14 @@ class shelf extends React.Component {
   render() {
 
     return (
-      <Link
-        to='/search'
-          className='open-search'>
-            Open
-      </Link>
-      <div>Book Shelf</div>
+      <div>
+        <Link
+          to='/search'
+            className='open-search'>
+              Open
+        </Link>
+        <div>Book Shelf</div>
+      </div>
     )
   }
 }
