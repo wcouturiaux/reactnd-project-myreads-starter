@@ -3,16 +3,17 @@ import {Link} from 'react-router-dom'
 
 class search extends React.Component {
   state = {
-    
+
   }
 
   render() {
-    <Link
-      to='/'
-        className='close-search'>
-          Close
-    </Link>
+
     return (
+      <Link
+        to='/'
+          className='close-search'>
+            Close
+      </Link>
       <div>Book Search</div>
     )
   }
