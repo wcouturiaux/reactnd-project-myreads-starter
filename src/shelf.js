@@ -11,11 +11,7 @@ class Shelf extends React.Component {
 
     return (
       <div>
-        <Link
-          to='/search'
-            className='open-search'>
-              Open
-        </Link>
+        <Link to='/search' className='open-search'> Open </Link>
         <div className="list-books-content">
           <div>
             <div className="bookshelf">

@@ -23,19 +23,9 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route exact path='/'
           render = {() => (<Shelf />)}/>
+        <Route exact path='/search'
+        render = {() => (<Search />)}/>
 
-
-
-        {this.state.showSearchPage ? (
-          <Route exact path='/search'
-          render = {() => (<Search />)}/>  
-        ) : (
-
-            <div className="open-search">
-              <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
-            </div>
-
-        )}
       </div>
     )
   }
