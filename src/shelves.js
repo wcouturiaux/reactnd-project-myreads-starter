@@ -17,8 +17,8 @@ class Shelves extends React.Component {
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
-              {shelves.map((shelf)=>(
-                <div key={shelf.id}>
+              {shelves.map((shelf,index)=>(
+                <div key={index}>
                 <Shelf title={shelf.title} books={this.props.books} shelf={shelf.getBooks} changeShelf={this.props.changeShelf} />
                 </div>
               ))}
