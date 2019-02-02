@@ -7,9 +7,10 @@ import {Route} from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
-    books: [],
-    searchBooks:[]
+    books: []
   }
+
+
 
   componentDidMount(){
     BooksAPI.getAll().then((books) => {
@@ -25,36 +26,14 @@ class BooksApp extends React.Component {
     })
   }
 
-  search = (query) => {
-    BooksAPI.search(query.trim()).then(
-      response => {
-        if (response && response.length) {
-          response.map((book) => {
-            this.state.books.map((obook) => {
-              (obook.id === book.id ? book.shelf = obook.shelf : "no shelf");
-            });
-          });
-          this.setState({searchBooks: response});
-        }
-        else {
-          this.setState({
-            searchBooks:[]
-          })
-        };
-      }
-    )
-  }
-
-
   render() {
     return (
       <div className="app">
         <Route exact path='/'
-          render = {() => (<Shelves books={this.state.books} changeShelf={this.changeShelf}/>)}
+          render = {() => (<Shelves books={this.state.books} changeShelf={this.changeShelf} />)}
         />
         <Route exact path='/search'
-          render = {() => (<Search searchBooks={this.state.searchBooks} search={this.search} changeShelf={this.changeShelf}
-                                books={this.state.books}/>)}
+          render = {() => (<Search changeShelf={this.changeShelf} books={this.state.books}/>)}
         />
 
       </div>

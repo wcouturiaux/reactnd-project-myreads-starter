@@ -1,5 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Shelves from './shelves'
+import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 
 
 class Search extends React.Component {
@@ -7,24 +10,34 @@ class Search extends React.Component {
     query:''
   }
 
+  updateQuery = (query) => {
+    this.setState({query: query.trim()})
+  }
 
 
   render() {
-
+    let searchedBooks
+    if (this.state.query) {
+      const match = new RegExp(escapeRegExp(this.state.query), 'i')
+      searchedBooks = this.props.books.filter((book) => match.test(book.title))
+    } else {
+      searchedBooks = this.props.books
+    }
     return (
       <div className="search-books">
         <div className="search-books-bar">
           <Link to='/' className="close-search">Close</Link>
           <div className="search-books-input-wrapper">
             <input type="text" placeholder="Search by title or author" onChange={(event) => {
-              this.props.search(event.target.value)
               this.setState({query: event.target.value})
             }}/>
           </div>
         </div>
         <div className="search-books-results">
 
-          <ol className="books-grid"></ol>
+          <ol className="books-grid">
+            <Shelves books={searchedBooks} changeShelf={this.changeShelf}/>
+          </ol>
         </div>
       </div>
     )
