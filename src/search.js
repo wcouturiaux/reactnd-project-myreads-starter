@@ -19,7 +19,7 @@ class Search extends React.Component {
     let searchedBooks
     if (this.state.query) {
       const match = new RegExp(escapeRegExp(this.state.query), 'i')
-      searchedBooks = this.props.books.filter((book) => match.test(book.title))
+      searchedBooks = this.props.books.filter((book) => match.test(book.title) || match.test(book.authors))
     } else {
       searchedBooks = this.props.books
     }
