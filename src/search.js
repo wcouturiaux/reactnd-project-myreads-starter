@@ -35,11 +35,7 @@ class Search extends React.Component {
     }
     BooksAPI.search(this.state.query.trim())
       .then((response) => {
-        if (response.error) {
-          return this.setState({
-            searchResults:[]
-          })
-        } else {
+          console.log(response);
           response.forEach(bk => {
             let matches = this.state.books.filter(B=> B.id === bk.id);
             bk.shelf = matches[0] ? matches[0].shelf : 'none';
@@ -47,7 +43,11 @@ class Search extends React.Component {
           return this.setState({
             searchResults: response
           })
-        }
+      })
+      .catch((err) => {
+        return this.setState({
+          searchResults: []
+        })
       })
   }
 
