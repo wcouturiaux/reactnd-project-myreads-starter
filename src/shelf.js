@@ -12,7 +12,7 @@ class Shelf extends React.Component {
       booksOnShelf = this.props.books,
 
       <div>
-        <Link to='/search' className='open-search'> Open </Link>
+        <Link to='/search' className='open-search'> Search Books </Link>
         <div>
           <div className="bookshelf">
             <h2 className="bookshelf-title">{this.props.title}</h2>
