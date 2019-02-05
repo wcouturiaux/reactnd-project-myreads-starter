@@ -2,8 +2,7 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import {Link} from 'react-router-dom'
 import Book from './book'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
+import DebounceInput from 'react-debounce-input'
 
 
 class Search extends React.Component {
@@ -35,7 +34,6 @@ class Search extends React.Component {
     }
     BooksAPI.search(this.state.query.trim())
       .then((response) => {
-          console.log(response);
           response.forEach(bk => {
             let matches = this.state.books.filter(B=> B.id === bk.id);
             bk.shelf = matches[0] ? matches[0].shelf : 'none';
@@ -58,7 +56,7 @@ class Search extends React.Component {
         <div className="search-books-bar">
           <Link to='/' className="close-search">Close</Link>
           <div className="search-books-input-wrapper">
-            <input type="text" placeholder="Search by title or author" value = {this.state.query} onChange={(event) => {
+            <DebounceInput debounceTimeout={800} type="text" placeholder="Search by title or author" value = {this.state.query} onChange={(event) => {
               this.updateQuery(event.target.value)
             }}/>
           </div>
